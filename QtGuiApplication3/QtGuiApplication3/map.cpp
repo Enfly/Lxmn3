@@ -29,16 +29,7 @@ void Map::paintEvent(QPaintEvent*)
 	pen.setColor(Qt::black);
 	pen.setWidth(4);
 	painter.setPen(pen);
-	int i,flage,j;
-	i = 0;
-	flage = 0;
-	for (j = 0; j < 10&&flage==0; j++)
-	{
-		if (leftOutput[j].next == 0)
-		{
-			flage = 1;
-		}
-	}//j为城市数
+	int i,flage;
 	flage = 0;
 	if (position.from == position.to)
 	{
@@ -46,31 +37,10 @@ void Map::paintEvent(QPaintEvent*)
 		{
 			painter.setBrush(Qt::black);
 			painter.drawEllipse(QPointF(Pointx(position.from), Pointy(position.from)), 6, 6);
-			if (userEnd == 1)
-			{
-				for (i = 0; i < j - 1;)
-				{
-					if (leftOutput[i].outType == 0)
-					{
-						pen.setColor(Qt::green);
-					}
-					else if (leftOutput[i].outType == 1)
-					{
-						pen.setColor(Qt::red);
-					}
-					else if (leftOutput[i].outType == 2)
-					{
-						pen.setColor(Qt::blue);
-					}
-					painter.setPen(pen);
-					painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i + 1].here), Pointy(leftOutput[i + 1].here));
-					i++;
-				}
-			}
 			flage = 1;
 		}
 	}
-	else if (position.to == leftOutput[0].here&& position.from!= leftOutput[j-1].here&&leftOutput[0].here!=leftOutput[j-1].here)
+	else if (position.to == leftOutput[0].here&& position.from!= leftOutput[8].here)
 	{
 		if (leftOutput[0].outType == 0)
 		{
@@ -88,7 +58,7 @@ void Map::paintEvent(QPaintEvent*)
 		painter.drawLine(Pointx(position.from), Pointy(position.from), (Pointx(position.to)+ Pointx(position.from))/2, (Pointy(position.to) + Pointy(position.from)) / 2);
 		flage = 2;
 	}
-	for (; i < j-1&&flage==0;)
+	for (i = 0; i < 9&&flage==0;)
 	{
 		if (leftOutput[i].outType == 0)
 		{
@@ -103,6 +73,8 @@ void Map::paintEvent(QPaintEvent*)
 			pen.setColor(Qt::blue);
 		}
 		painter.setPen(pen);
+		painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i+1].here), Pointy(leftOutput[i+1].here));
+		i++;
 		if (position.from == leftOutput[i].here)
 		{
 			if (position.from == position.to)
@@ -123,30 +95,8 @@ void Map::paintEvent(QPaintEvent*)
 				flage = 2;
 			}
 		}
-		else
-		{
-			painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i + 1].here), Pointy(leftOutput[i + 1].here));
-		}
-		i++;
 	}
 	if (flage == 2)
-	{
-		if (leftOutput[i-1].outType == 0)
-		{
-			pen2.setColor(Qt::green);
-		}
-		else if (leftOutput[i-1].outType == 1)
-		{
-			pen2.setColor(Qt::red);
-		}
-		else if (leftOutput[i-1].outType == 2)
-		{
-			pen2.setColor(Qt::blue);
-		}
-		painter.setPen(pen2);
-		painter.drawLine((Pointx(position.to) + Pointx(position.from)) / 2, (Pointy(position.to) + Pointy(position.from)) / 2, Pointx(position.to), Pointy(position.to));
-	}
-	for (; i < j-1&& leftOutput[i+1].here!=0; i++)
 	{
 		if (leftOutput[i].outType == 0)
 		{
@@ -161,7 +111,25 @@ void Map::paintEvent(QPaintEvent*)
 			pen2.setColor(Qt::blue);
 		}
 		painter.setPen(pen2);
-		painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i+1].here), Pointy(leftOutput[i + 1].here));
+		painter.drawLine((Pointx(position.to) + Pointx(position.from)) / 2, (Pointy(position.to) + Pointy(position.from)) / 2,Pointx(position.to), Pointy(position.to));
+		i++;
+	}
+	for (; i < 9&& leftOutput[i+1].here!=0; i++)
+	{
+		if (leftOutput[i].outType == 0)
+		{
+			pen2.setColor(Qt::green);
+		}
+		else if (leftOutput[i].outType == 1)
+		{
+			pen2.setColor(Qt::red);
+		}
+		else if (leftOutput[i].outType == 2)
+		{
+			pen2.setColor(Qt::blue);
+		}
+		painter.setPen(pen2);
+		painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i + 1].here), Pointy(leftOutput[i + 1].here));
 	}
 	painter.end();
 }

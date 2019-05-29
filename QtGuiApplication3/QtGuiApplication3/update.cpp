@@ -86,14 +86,12 @@ void update1(void) {//随时间更新旅客位置
 		i++;
 	}
 	i--;
-	if (leftOutput[i].inTime <= h) {//如果到终点
+	if (leftOutput[i].inTime <= h) {
 		position.from = leftOutput[i].here;
 		position.to = leftOutput[i].here;
-		userEnd = 1;
 	}
 	if ((positionOld.from != position.from) || (positionOld.to != position.to)) {
 		logging(3);
 	}
 	fin.close();
-	
 }

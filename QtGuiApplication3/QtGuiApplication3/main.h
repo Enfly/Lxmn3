@@ -111,7 +111,5 @@ extern int month;
 extern int date;
 extern int hour;
 
-extern int userEnd;
-
 extern int user;//用户名
 #endif//防止头文件重复包含，放在最后面

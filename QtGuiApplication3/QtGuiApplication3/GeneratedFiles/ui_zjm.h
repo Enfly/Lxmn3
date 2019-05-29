@@ -323,8 +323,8 @@ public:
         comboBox_3->setItemText(9, QApplication::translate("zjm", "\345\271\277\345\267\236", nullptr));
 
         label_6->setText(QApplication::translate("zjm", "\346\227\205\350\241\214\347\255\226\347\225\245", nullptr));
-        comboBox_2->setItemText(0, QApplication::translate("zjm", "\346\234\200\345\260\221\346\227\266\351\227\264", nullptr));
-        comboBox_2->setItemText(1, QApplication::translate("zjm", "\346\234\200\345\260\221\350\264\271\347\224\250", nullptr));
+        comboBox_2->setItemText(0, QApplication::translate("zjm", "\346\234\200\345\260\221\350\264\271\347\224\250", nullptr));
+        comboBox_2->setItemText(1, QApplication::translate("zjm", "\346\234\200\345\260\221\346\227\266\351\227\264", nullptr));
         comboBox_2->setItemText(2, QApplication::translate("zjm", "\350\247\204\345\256\232\346\227\266\351\227\264\346\234\200\345\260\221\350\264\271\347\224\250", nullptr));
 
         pushButton_3->setText(QApplication::translate("zjm", "\351\207\215\346\226\260\347\224\237\346\210\220", nullptr));

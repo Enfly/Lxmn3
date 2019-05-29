@@ -27,7 +27,6 @@ Left leftOutput[11];//路径输出
 int moneyOutput = 0;//花费输出
 int i;
 int cityPass[10];
-int userEnd = 0;
 
 
 zjm::zjm(QWidget *parent)
@@ -62,11 +61,9 @@ void zjm::timerEvent(QTimerEvent*)
 		hour = -1;
 		emit DayUp();
 	}
+	emit chonghui();
 	ui.lineEdit_4->setText(QString::number(++hour));
 	update1();
-	emit chonghui();
-	m.hide();
-	m.show();
 }
 void zjm::Dayup()
 {
@@ -195,9 +192,8 @@ void zjm::sccl()
 		Cal(hour);
 		m.show();
 		hide2();
-		id1 = startTimer(3000);
+		id1 = startTimer(10000);
 		emit chonghui();
-		logging(1);
 	}
 	else if (flage == 2)
 	{
@@ -244,7 +240,6 @@ void zjm::select()
 		m.show();
 	}
 	hide2();
-	logging(0);
 }
 void zjm::hide2()
 {
@@ -277,7 +272,6 @@ void zjm::hide2()
 void zjm::Tc()
 {
 	hide1();
-	logging(-1);
 }
 void zjm::hide3()
 {

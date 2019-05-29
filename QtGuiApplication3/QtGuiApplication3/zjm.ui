@@ -294,12 +294,12 @@
      <widget class="QComboBox" name="comboBox_2">
       <item>
        <property name="text">
-        <string>最少时间</string>
+        <string>最少费用</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>最少费用</string>
+        <string>最少时间</string>
        </property>
       </item>
       <item>
