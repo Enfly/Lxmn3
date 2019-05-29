@@ -365,7 +365,7 @@ void calMinMoney(int h, Left *l, int m, int lf) {//最少价格
 	Edge e;
 
 	//终结条件
-	if (here == message.target) {
+	if ((here == message.target) && (lf == 1)) {
 		int j = 0;//当前路径号
 		while (leftp[j].here != 0) {
 			j++;
@@ -379,12 +379,11 @@ void calMinMoney(int h, Left *l, int m, int lf) {//最少价格
 				}
 				minM = money;
 				moneyOutput = m;
-				int x = 0;
 			}
 		}
 		return;
 	}
-	else if ((lf == 2) && (message.from == message.target)) {//5
+	else if ((lf == 2) && (message.from == message.target)) {
 		int j = 0;//当前路径号
 		while (leftp[j].here != 0) {
 			j++;
@@ -600,7 +599,7 @@ void calComplex(int h, Left *l, int m, int lf) {//限时最少费用
 	Edge e;
 
 	//终结条件
-	if (here == message.target) {
+	if ((here == message.target) && (lf == 1)) {
 		if (lf == 1) {
 			int j = 0;
 			while (leftp[j].here != 0) {
