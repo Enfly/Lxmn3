@@ -24,17 +24,17 @@ void logging(int mode) {
 		int i = 0;
 		if (position.from != message.target) {
 			fout << position.from<<" ";
-			fout << position.to;
-			fout << year;
-			fout << month;
-			fout << date;
+			fout << position.to << " ";
+			fout << year << " ";
+			fout << month << " ";
+			fout << date << endl;
 		}
 		while (leftOutput[i].here != 0) {
-			fout << leftOutput[i].here;
-			fout << leftOutput[i].next;
-			fout << leftOutput[i].inTime;
-			fout << leftOutput[i].outTime;
-			fout << leftOutput[i].outType;
+			fout << leftOutput[i].here << " ";
+			fout << leftOutput[i].next << " ";
+			fout << leftOutput[i].inTime << " ";
+			fout << leftOutput[i].outTime << " ";
+			fout << leftOutput[i].outType <<endl;
 			i++;
 		}
 	}
@@ -170,13 +170,13 @@ void logging(int mode) {
 			fout.open("user2.txt", ios::trunc);
 		if (user == 3)
 			fout.open("user3.txt", ios::trunc);
-			fout << 1;
+			fout << 1 << " ";
 			fout << moneyOutput << endl;
-			fout << position.from;//需要按照user2.txt的格式修改
-			fout << position.to;
-			fout << year;
-			fout << month;
-			fout << date;
+			fout << position.from << " ";//需要按照user2.txt的格式修改
+			fout << position.to << " ";
+			fout << year << " ";
+			fout << month << " ";
+			fout << date<<endl;
 		i = 0;
 	}
 	if (mode == 3) {//用户移动 log
@@ -189,7 +189,7 @@ void logging(int mode) {
 					fout.open("user2.txt", ios::trunc);
 				if (user == 3)
 					fout.open("user3.txt", ios::trunc);
-				fout << 0<<" ";
+				fout << 0<<endl;
 			logl << year << ". " << month << ". " << date << "  " << hour << endl;
 			logl << "用户" << user << "到达了";
 			switch (position.from) {
