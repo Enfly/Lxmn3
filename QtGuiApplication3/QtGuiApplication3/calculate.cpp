@@ -57,6 +57,7 @@ int Cal(int hour) {
 			return 0;
 		}
 	}
+	logging(2);
 	return 1;
 }
 
