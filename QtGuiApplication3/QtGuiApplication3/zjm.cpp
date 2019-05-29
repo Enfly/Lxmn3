@@ -61,9 +61,9 @@ void zjm::timerEvent(QTimerEvent*)
 		hour = -1;
 		emit DayUp();
 	}
-	emit chonghui();
 	ui.lineEdit_4->setText(QString::number(++hour));
 	update1();
+	emit chonghui();
 }
 void zjm::Dayup()
 {
@@ -192,7 +192,7 @@ void zjm::sccl()
 		Cal(hour);
 		m.show();
 		hide2();
-		id1 = startTimer(10000);
+		id1 = startTimer(3000);
 		emit chonghui();
 	}
 	else if (flage == 2)

@@ -73,8 +73,6 @@ void Map::paintEvent(QPaintEvent*)
 			pen.setColor(Qt::blue);
 		}
 		painter.setPen(pen);
-		painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i+1].here), Pointy(leftOutput[i+1].here));
-		i++;
 		if (position.from == leftOutput[i].here)
 		{
 			if (position.from == position.to)
@@ -95,24 +93,28 @@ void Map::paintEvent(QPaintEvent*)
 				flage = 2;
 			}
 		}
+		else
+		{
+			painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i + 1].here), Pointy(leftOutput[i + 1].here));
+		}
+		i++;
 	}
 	if (flage == 2)
 	{
-		if (leftOutput[i].outType == 0)
+		if (leftOutput[i-1].outType == 0)
 		{
 			pen2.setColor(Qt::green);
 		}
-		else if (leftOutput[i].outType == 1)
+		else if (leftOutput[i-1].outType == 1)
 		{
 			pen2.setColor(Qt::red);
 		}
-		else if (leftOutput[i].outType == 2)
+		else if (leftOutput[i-1].outType == 2)
 		{
 			pen2.setColor(Qt::blue);
 		}
 		painter.setPen(pen2);
-		painter.drawLine((Pointx(position.to) + Pointx(position.from)) / 2, (Pointy(position.to) + Pointy(position.from)) / 2,Pointx(position.to), Pointy(position.to));
-		i++;
+		painter.drawLine((Pointx(position.to) + Pointx(position.from)) / 2, (Pointy(position.to) + Pointy(position.from)) / 2, Pointx(position.to), Pointy(position.to));
 	}
 	for (; i < 9&& leftOutput[i+1].here!=0; i++)
 	{
@@ -129,7 +131,7 @@ void Map::paintEvent(QPaintEvent*)
 			pen2.setColor(Qt::blue);
 		}
 		painter.setPen(pen2);
-		painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i + 1].here), Pointy(leftOutput[i + 1].here));
+		painter.drawLine(Pointx(leftOutput[i].here), Pointy(leftOutput[i].here), Pointx(leftOutput[i+1].here), Pointy(leftOutput[i + 1].here));
 	}
 	painter.end();
 }
