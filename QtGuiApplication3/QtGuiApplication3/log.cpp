@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-void logging(int mode) {
+void logging(int mode) {//有问题
 	ofstream logl("log.txt", ios::app);
 	ofstream fout;
 
@@ -23,18 +23,18 @@ void logging(int mode) {
 			fout.open("user3.txt", ios::app);
 		int i = 0;
 		if (position.from != message.target) {
-			fout << position.from;
-			fout << position.to;
-			fout << year;
-			fout << month;
-			fout << date;
+			fout << position.from<<" ";
+			fout << position.to << " ";
+			fout << year << " ";
+			fout << month << " ";
+			fout << date << endl;
 		}
 		while (leftOutput[i].here != 0) {
-			fout << leftOutput[i].here;
-			fout << leftOutput[i].next;
-			fout << leftOutput[i].inTime;
-			fout << leftOutput[i].outTime;
-			fout << leftOutput[i].outType;
+			fout << leftOutput[i].here << " ";
+			fout << leftOutput[i].next << " ";
+			fout << leftOutput[i].inTime << " ";
+			fout << leftOutput[i].outTime << " ";
+			fout << leftOutput[i].outType <<endl;
 			i++;
 		}
 	}
@@ -170,41 +170,26 @@ void logging(int mode) {
 			fout.open("user2.txt", ios::trunc);
 		if (user == 3)
 			fout.open("user3.txt", ios::trunc);
-
-
-		if (position.from != message.target) {
-			fout << 1;
+			fout << 1 << " ";
 			fout << moneyOutput << endl;
-			fout << position.from;//需要按照user2.txt的格式修改
-			fout << position.to;
-			fout << year;
-			fout << month;
-			fout << date;
-		}
+			fout << position.from << " ";//需要按照user2.txt的格式修改
+			fout << position.to << " ";
+			fout << year << " ";
+			fout << month << " ";
+			fout << date<<endl;
 		i = 0;
 	}
 	if (mode == 3) {//用户移动 log
 		int i, flage;
-		for (i = 0, flage = 0; i < 10 && flage == 0; i++)
+		if(userEnd==1)
 		{
-			if (leftOutput[i].next == 0)
-			{
-				flage = 1;
-			}
-
-		}
-		if (position.from == position.to)
-		{
-			if (position.from == leftOutput[i].here)
-			{
 				if (user == 1)
 					fout.open("user1.txt", ios::trunc);
 				if (user == 2)
 					fout.open("user2.txt", ios::trunc);
 				if (user == 3)
 					fout.open("user3.txt", ios::trunc);
-				fout << 0;
-			}
+				fout << 0<<endl;
 			logl << year << ". " << month << ". " << date << "  " << hour << endl;
 			logl << "用户" << user << "到达了";
 			switch (position.from) {
@@ -229,11 +214,6 @@ void logging(int mode) {
 		//需要写
 
 		//（位置然后开始动，还有交通方式）
-	}
-	if (mode == 4) {//用户修改了方案 log
-		logl << "用户 " << user << "修改方案" << endl;
-		logging(1);
-		logging(2);
 	}
 
 	logl.close();
