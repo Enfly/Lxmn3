@@ -31,8 +31,8 @@ int ift = 0;
 int Cal(int hour) {
 	int m = 0;//计算出的花费
 	int trans = 0;//交通方式
-	Left leftp[11];//记录轨迹
-	for (int i = 0; i < 11; i++) {
+	Left leftp[12];//记录轨迹
+	for (int i = 0; i < 12; i++) {
 		leftp[i].here = 0;
 		leftp[i].inTime = 0;
 		leftp[i].next = 0;
@@ -68,8 +68,8 @@ int initC(int hour, Left* left) {//初始化cities
 		i++;
 	}
 	amount = i + 2;
-	int cs[10];//城市列表
-	for (i = 0; i < 10; i++)
+	int cs[12];//城市列表
+	for (i = 0; i < 12; i++)
 		cs[i] = 0;
 
 	cs[0] = message.from;
@@ -121,8 +121,8 @@ int initC(int hour, Left* left) {//初始化cities
 }
 
 void calMinTime(int h, Left *l, int m, int lf) {//最短时间
-	Left leftp[11];
-	for (int i = 0; i < 11; i++) {
+	Left leftp[12];
+	for (int i = 0; i < 12; i++) {
 		leftp[i] = l[i];
 	}
 	int here = h;
@@ -229,10 +229,12 @@ void calMinTime(int h, Left *l, int m, int lf) {//最短时间
 			if (ti < tj) {
 				for (int x = 0; x < 11; x++)
 					leftp[x] = left1[x];
+				money = money1;
 			}
 			else {
 				for (int x = 0; x < 11; x++)
 					leftp[x] = left2[x];
+				money = money2;
 			}
 			leftp[j].next = leftp[j + 1].here = message.target;
 			here = message.target;
@@ -334,10 +336,12 @@ void calMinTime(int h, Left *l, int m, int lf) {//最短时间
 					if (ti < tj) {
 						for (int x = 0; x < 11; x++)
 							leftp[x] = left1[x];
+						money = money1;
 					}
 					else {
 						for (int x = 0; x < 11; x++)
 							leftp[x] = left2[x];
+						money = money2;
 					}
 					leftp[j].next = leftp[j + 1].here = cities[here].out[i];
 					here = cities[here].out[i];
@@ -358,8 +362,8 @@ void calMinTime(int h, Left *l, int m, int lf) {//最短时间
 
 void calMinMoney(int h, Left *l, int m, int lf) {//最少价格
 	//思路：先看汽车，没有就火车
-	Left leftp[11];
-	for (int i = 0; i < 11; i++) {
+	Left leftp[12];
+	for (int i = 0; i < 12; i++) {
 		leftp[i] = l[i];
 	}
 	int here = h;
@@ -592,8 +596,8 @@ void calMinMoney(int h, Left *l, int m, int lf) {//最少价格
 
 void calComplex(int h, Left *l, int m, int lf) {//限时最少费用
 	//思路：算最短时间，一旦价格超过设定价格，就停止此分支
-	Left leftp[11];
-	for (int i = 0; i < 11; i++) {
+	Left leftp[12];
+	for (int i = 0; i < 12; i++) {
 		leftp[i] = l[i];
 	}
 	int here = h;

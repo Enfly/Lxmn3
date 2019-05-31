@@ -9,6 +9,7 @@ class Map : public QWidget
 
 public:
 	Map(QWidget *parent = Q_NULLPTR);
+	void money();
 	~Map();
 private:
 	Ui::map ui;
@@ -16,6 +17,6 @@ private:
 	int Pointy(int position);
 protected:
 	void paintEvent(QPaintEvent*);
-protected slots:
+public slots:
 	void updat();
 };

@@ -135,6 +135,9 @@
     <Text Include="汽车.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="TIME.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resource.qrc">

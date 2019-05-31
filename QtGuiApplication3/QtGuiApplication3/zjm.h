@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+#include<QCloseEvent>
 #include "ui_zjm.h"
 #include "main.h"
 #include"map.h"
@@ -21,6 +22,7 @@ public:
 	warning2 w2;
 	warning3 w3;
 	void timerEvent(QTimerEvent*);
+	void closeEvent(QCloseEvent* event);
 signals:
 	void DayUp();
 	void MonthUp();

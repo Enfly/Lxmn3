@@ -6,16 +6,45 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>955</width>
-    <height>814</height>
+    <width>1111</width>
+    <height>809</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>map</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image:url(:/new/prefix1/Resources/1.PNG)</string>
+   <string notr="true">background-image: url(:/new/prefix1/D:/Downloads/QQdownload/1.png);</string>
   </property>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>980</x>
+     <y>150</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/new/prefix1/D:/Downloads/QQdownload/oz.png);</string>
+   </property>
+   <property name="text">
+    <string>费用</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>150</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/new/prefix1/D:/Downloads/QQdownload/oz.png);</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

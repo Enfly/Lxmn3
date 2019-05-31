@@ -2,11 +2,11 @@
 #include "main.h"
 #include <iostream>
 #include<QTimer>
-int hour = 0;
-int date = 1;
-int month = 1;
-int year = 2010;
-
+#include <fstream>
+int year;
+int month;
+int date;
+int hour;
 //用户名
 int user;
 //存边
@@ -22,7 +22,7 @@ Position position;
 //当前位置
 //Position position;//实时位置
 
-Left leftOutput[11];//路径输出
+Left leftOutput[12];//路径输出
 //路径
 int moneyOutput = 0;//花费输出
 int i;
@@ -34,6 +34,13 @@ zjm::zjm(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	ifstream time1;
+	time1.open("TIME.txt", ios::in);
+	time1 >> year;
+	time1 >> month;
+	time1 >> date;
+	time1 >> hour;
+	time1.close();
 	readLog();
 	ui.lineEdit_4->setText(QString::number(hour));
 	ui.lineEdit_3->setText(QString::number(date));
@@ -64,9 +71,21 @@ void zjm::timerEvent(QTimerEvent*)
 	}
 	ui.lineEdit_4->setText(QString::number(++hour));
 	update1();
-	emit chonghui();
-	m.hide();
-	m.show();
+	if (userEnd != 1)
+	{
+		emit chonghui();
+		m.hide();
+		m.show();
+	}
+}
+void zjm::closeEvent(QCloseEvent*event)
+{
+	ofstream time2;
+	time2.open("TIME.txt", ios::trunc);
+	time2 << year<<" ";
+	time2 << month<<" ";
+	time2 << date<< " ";
+	time2 << hour<< " ";
 }
 void zjm::Dayup()
 {
@@ -172,12 +191,15 @@ void zjm::sccl()
 	int mode3Time = ui.spinBox->value();
 	if (readUser(user) == 1)
 	{
-		if (position.to != cityPass[0])
+		if (position.to != cityStart)
 		{
 			flage = 3;
 		}
 	}
-	if (cityStart == cityTarget)
+	if (cityStart == cityTarget && cityPass[0] == 0)
+	{
+		flage = 2;
+	}
 	for (i = 0; i < 9&&flage==1; i++)
 	{
 		if (cityPass[i] == cityStart || cityPass[i] == cityTarget)
@@ -195,8 +217,9 @@ void zjm::sccl()
 		Cal(hour);
 		m.show();
 		hide2();
-		id1 = startTimer(3000);
+		id1 = startTimer(10000);
 		emit chonghui();
+		m.money();
 		logging(1);
 	}
 	else if (flage == 2)
@@ -235,6 +258,7 @@ void zjm::hide1()
 	ui.label_7->hide();
 	ui.label_8->hide();
 	ui.label_9->hide();
+	ui.label_10->hide();
 }
 void zjm::select()
 {
@@ -244,6 +268,7 @@ void zjm::select()
 		m.show();
 	}
 	hide2();
+	m.money();
 	logging(0);
 }
 void zjm::hide2()
@@ -273,10 +298,12 @@ void zjm::hide2()
 	ui.label_7->hide();
 	ui.label_8->hide();
 	ui.label_9->hide();
+	ui.label_10->hide();
 }
 void zjm::Tc()
 {
 	hide1();
+	m.hide();
 	logging(-1);
 }
 void zjm::hide3()
@@ -306,6 +333,7 @@ void zjm::hide3()
 	ui.label_7->show();
 	ui.label_8->show();
 	ui.label_9->show();
+	ui.label_10->show();
 }
 void zjm::CL()
 {

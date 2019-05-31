@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/new/prefix1">
         <file>Resources/1.PNG</file>
+        <file>D:/Downloads/QQdownload/oz.png</file>
+        <file>D:/Downloads/QQdownload/1.png</file>
     </qresource>
 </RCC>

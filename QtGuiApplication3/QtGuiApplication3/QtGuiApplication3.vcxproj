@@ -165,6 +165,7 @@
     <Text Include="log.txt" />
     <Text Include="plane.txt" />
     <Text Include="Readme.txt" />
+    <Text Include="TIME.txt" />
     <Text Include="train.txt" />
     <Text Include="user1.txt" />
     <Text Include="user2.txt" />

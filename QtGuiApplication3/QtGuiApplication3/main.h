@@ -47,13 +47,13 @@ class Message {//信息
 public:
 	int from;
 	int target;
-	int pass[9];//路过,以零结尾
+	int pass[10];//路过,以零结尾
 	int calMode;//模式：1.最短时间	2.最少价格	3.限时最少费用
 	int mode3Time;//一定价格内最短时间的价格
 	Message() {//构造函数
 		from = 0;
 		target = 0;
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < 10; i++) {
 
 			pass[i] = 0;
 		}
@@ -78,7 +78,7 @@ public:
 		outType = 0;
 	}
 };
-extern Left leftOutput[11];//路径输出
+extern Left leftOutput[12];//路径输出
 extern int moneyOutput;//花费输出
 
 

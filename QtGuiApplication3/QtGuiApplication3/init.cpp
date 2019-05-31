@@ -303,14 +303,19 @@ int readUser(int u) {//有问题
 		}
 		if (datedifferent != 10000) {
 			hourdifferent = (datedifferent * 24) + hour;
-			if (hourdifferent < hh) {
+			if (hourdifferent < hh) {//如果不在终点
 				ab = 1;
+			}
+			else {//如果在终点
+				ab = 0;
 			}
 		}
 		
+
+
 		i = 0;
 		int bu3 = 0;//为1时开始补日志
-		while (leftOutput[i].here != 0) {
+		while (leftOutput[i].next != 0) {
 			if ((leftOutput[i].inTime <= hourdifferent) && (leftOutput[i].outTime >= hourdifferent)) {
 				position.from = leftOutput[i].here;
 				position.to = leftOutput[i].here;
@@ -320,15 +325,15 @@ int readUser(int u) {//有问题
 				position.to = leftOutput[i + 1].here;
 			}
 			if (bu3 == 1) {//开始补日志!
-
 				logging(3);
 			}
-			if (position.from == positionOut.from) {
-				if (position.to == positionOut.to) {
-					bu3 = 1;
-				}
-			}
 			i++;
+		}
+		if (ab == 0) {//如果到终点
+			position.from = leftOutput[i].here;
+			position.to = leftOutput[i].here;
+			logging(3);
+			userEnd = 1;
 		}
 		if (ab == 0) {//用户在终点
 			userEnd = 1;

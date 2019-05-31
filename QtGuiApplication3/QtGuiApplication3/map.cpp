@@ -7,11 +7,9 @@ Map::Map(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-
 	setMinimumSize(1246, 814);
-
 	setMaximumSize(1246, 814);
-	connect(parent, SIGNAL(chonghui()), this, SLOT(updat()));
+	ui.lineEdit->setText(QString::number(moneyOutput));
 }
 
 Map::~Map()
@@ -32,7 +30,7 @@ void Map::paintEvent(QPaintEvent*)
 	int i,flage,j;
 	i = 0;
 	flage = 0;
-	for (j = 0; j < 10&&flage==0; j++)
+	for (j = 0; j < 11&&flage==0; j++)
 	{
 		if (leftOutput[j].next == 0)
 		{
@@ -220,4 +218,8 @@ int Map::Pointy(int position)
 void Map::updat()
 {
 	update();
+}
+void Map::money()
+{
+	ui.lineEdit->setText(QString::number(moneyOutput));
 }

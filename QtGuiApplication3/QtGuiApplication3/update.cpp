@@ -74,7 +74,7 @@ void update1(void) {//随时间更新旅客位置
 	}
 	h = h + (dch * 24);
 	i = 0;
-	while (leftOutput[i].here != 0) {
+	while (leftOutput[i].next != 0) {
 		if ((leftOutput[i].inTime <= h) && (leftOutput[i].outTime >= h)) {
 			position.from = leftOutput[i].here;
 			position.to = leftOutput[i].here;
@@ -85,7 +85,6 @@ void update1(void) {//随时间更新旅客位置
 		}
 		i++;
 	}
-	i--;
 	if (leftOutput[i].inTime <= h) {//如果到终点
 		position.from = leftOutput[i].here;
 		position.to = leftOutput[i].here;
