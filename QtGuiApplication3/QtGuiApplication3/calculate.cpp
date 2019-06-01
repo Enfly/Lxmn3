@@ -113,6 +113,10 @@ int initC(int hour, Left* left) {//初始化cities
 	position.to = message.from;
 	userEnd = 0;
 
+	minT = 10000;//最短时间
+	minM = 50000;//最少花费
+	ift = 0;
+
 	int n; i = 0;
 	while (cs[i] != 0)
 		i++;

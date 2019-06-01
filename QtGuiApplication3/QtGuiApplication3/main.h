@@ -63,7 +63,7 @@ public:
 };
 extern Message message; //存传入信息
 
-class Left {//记录
+class Left {//路径
 public:
 	int here;
 	int next;//下一个目的地,终点为0

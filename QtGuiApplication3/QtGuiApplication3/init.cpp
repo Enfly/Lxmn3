@@ -345,6 +345,13 @@ int readUser(int u) {//”–Œ Ã‚
 		}
 	}
 	else
+		for (int i = 0; i < 12; i++) {
+			leftOutput[i].here = 0;
+			leftOutput[i].inTime = 0;
+			leftOutput[i].next = 0;
+			leftOutput[i].outTime = 0;
+			leftOutput[i].outType = 0;
+		}
 		return -1;
 	
 }

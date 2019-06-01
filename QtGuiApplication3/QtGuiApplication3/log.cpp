@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-void logging(int mode) {//”–Œ Ã‚
+void logging(int mode) {
 	ofstream logl("log.txt", ios::app);
 	ofstream fout;
 
